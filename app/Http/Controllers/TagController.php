@@ -16,7 +16,7 @@ class TagController extends Controller
     public function index()
     {
         $article = Article::all();
-        $tag = Tag::limit(10)->get();
+        $tag = Tag::paginate(10);
             return view('input-tag',['tags'=>$tag, 'articles'=>$article]);
     }
 
@@ -39,7 +39,7 @@ class TagController extends Controller
     }
 
 
-    public function update(Request $request,)
+    public function update(Request $request)
     {
         $tag = Tag::find($request->id)->first();
         $tag->tag = $request->tag;

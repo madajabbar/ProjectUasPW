@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Tag;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
+
 class WebController extends Controller
 {
     public function index(){

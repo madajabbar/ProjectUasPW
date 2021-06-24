@@ -29,9 +29,9 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Judul</th>
-                <th scope="col">Tags</th>
+                <th scope="col" width="30%">Tags</th>
                 <th scope="col">Jumlah Tag</th>
-                <th scope="col"></th>
+                <th scope="col"width="20%"></th>
             </tr>
             </thead>
             @foreach ($articles as $a)
@@ -45,13 +45,43 @@
                 @endforeach
                 </th>
                 <th scope="row">{{$a->tags->count()}}</th>
+                <th>
+                    @foreach ($a->comments as $c)
+                        {{$c->comment}}
+                    @endforeach
+                </th>
                 <td>
                     <a class="btn btn-warning" href="/article/edit/{{$a->id}}">Edit</a>
                     <a class="btn btn-danger" href="/article/delete/{{$a->id}}">Hapus</a>
                 </td>
             </tr>
             </tbody>
+
             @endforeach
+            <div class="container">
+                <ul>
+                    <li class="page-item">Halaman {{$articles->currentPage()}}</li>
+                    <li class="page-item">Jumlah Data {{$articles->total()}}</li>
+                    <li class="page-item">Data perhalaman {{$articles->perPage()}}</li>
+                </ul>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <a class="page-link" href="{{$articles->previousPageUrl()}}" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="{{$articles->currentPage()}}">{{$articles->currentPage()}}</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="{{$articles->nextPageUrl()}}" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+            </div>
         </table>
 @endsection
 

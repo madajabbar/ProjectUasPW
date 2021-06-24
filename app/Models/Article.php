@@ -11,6 +11,9 @@ class Article extends Model
     public function tags(){
         return $this->hasMany('App\Models\Tag');
     }
+    public function comments(){
+        return $this->hasMany('App\Models\Comment');
+    }
     protected $table = 'articles';
     protected $fillable = ['id', 'title', 'content'];
 }

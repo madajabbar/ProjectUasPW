@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -13,7 +15,8 @@ class ArticleController extends Controller
     }
     public function index()
     {
-        $article = Article::limit(10)->get();
+        $article = Article::paginate(10);
+
             return view('input-article',['articles'=>$article]);
     }
 
@@ -48,5 +51,9 @@ class ArticleController extends Controller
         $article=Article::find($id);
         $article->delete();
         return redirect('/article');
+    }
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
     }
 }
