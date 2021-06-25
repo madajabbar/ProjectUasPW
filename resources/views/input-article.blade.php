@@ -31,7 +31,7 @@
                 <th scope="col">Judul</th>
                 <th scope="col" width="30%">Tags</th>
                 <th scope="col">Jumlah Tag</th>
-                <th scope="col"width="20%"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             @foreach ($articles as $a)
@@ -45,11 +45,6 @@
                 @endforeach
                 </th>
                 <th scope="row">{{$a->tags->count()}}</th>
-                <th>
-                    @foreach ($a->comments as $c)
-                        {{$c->comment}}
-                    @endforeach
-                </th>
                 <td>
                     <a class="btn btn-warning" href="/article/edit/{{$a->id}}">Edit</a>
                     <a class="btn btn-danger" href="/article/delete/{{$a->id}}">Hapus</a>

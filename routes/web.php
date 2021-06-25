@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\WebController;
-use App\Http\Controllers\CustomerLoginController;
-use App\Models\Article;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +16,11 @@ use App\Models\Article;
 */
 
 Route::get('/', [WebController::class,'index']);
-
+Route::get('/about', [WebController::class,'about']);
 //blog routes
 Route::get('/blog', [WebController::class, 'blog']);
 Route::get('/blog/{id}', [WebController::class, 'content']);
+Route::post('/blog/comment', [WebController::class, 'addComment']);
 //crud article
 Route::post('/article/input', [ArticleController::class,'create']);
 Route::get('/article', [ArticleController::class, 'index']);
@@ -39,13 +38,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware('auth:customer')->group(function(){
-    // Tulis routemu di sini.
-    Route::get('/customer/login', [CustomerLoginController::class,'showLoginForm'])->name('customer.loginform');
-    Route::get('/customer/register', [CustomerLoginController::class,'showRegisterForm'])->name('customer.registerform');
-    Route::post('/customer/login', [CustomerLoginController::class,'login'])->name('customer.login');
-    Route::post('/customer/register', [CustomerLoginController::class,'register'])->name('customer.register');
-    Route::get('/customer/home', [CustomerLoginController::class,'index'])->middleware('auth:customer');
-    Route::get('/customer/logout', [CustomerLoginController::class,'logout'])->name('customer.logout');
-  });
 

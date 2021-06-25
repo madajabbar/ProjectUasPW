@@ -89,9 +89,12 @@
                 </div>
             </div>
         </div>
-        <div id="slider-ef" class="slider-images-wrapper">
-                <img class="img-responsive" src="{{asset('view/img/slider/bendera jepun.jpg')}}" alt="Banner">
-        </div>
+            <div id="slider-ef" class="slider-images-wrapper">
+                @for ($x = 0; $x<=10;$x++)
+                    <img class="img-responsive" src="{{asset('view/img/slider/bendera jepun.jpg')}}" alt="Banner">
+                @endfor
+            </div>
+
     </div>
 </div>
 @endsection

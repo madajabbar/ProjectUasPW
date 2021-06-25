@@ -44,7 +44,7 @@
                     <div class="col-md-5 col-md-offset-1">
                         <div class="blog-front-content wow animated fadeInUp" data-wow-delay="0.20s">
                             <div class="blog-front-content-inner">
-                               <span class="post-single-date">14 Jun - 2015</span>
+                               <span class="post-single-date">{{$content->created_at->format('Y-m-d')}}</span>
                                <div class="share-buttons">
                                    <span class="info-title">Share:</span>
                                    <ul>
@@ -70,4 +70,56 @@
         </div>
     </div>
 </div>
+<div class="container margin-top">
+    <div class="newsletter">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="newsletter-left">
+                    <div class="newsletter-left-inner">
+                        <h1>Ayo beri komentar <br> Pada Artikel <br><b>{{$content->title}}</br></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="newsletter-right" style="background: url({{asset('view/img/newsletter-bg.jpg')}})">
+                    <div class="newsletter-right-inner">
+                        <form method="post" action="/blog/comment" data-parsley-validate novalidate>
+                            {{csrf_field()}}
+                            <input type="text" name="username" placeholder="Nama">
+                            <input type="text" name="comment" placeholder="Komentar anda">
+                            <input type="text" name="article_id" value="{{$content->id}}" hidden>
+                            <button type="submit" value="simpan">Komentar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog-comment">
+                    <h3 class="text-success">Comments</h3>
+                    <hr/>
+                    <ul class="comments">
+                    @foreach ($content->comments as $c)
+                    <li class="clearfix">
+                        <img src="https://picsum.photos/id/{{$loop->iteration}}/50/50" class="avatar" alt="">
+                        <div class="post-comments">
+                            <p class="meta">{{$c->created_at->format('Y-m-d')}} <a href="#">{{$c->username}} </a> says : <i class="pull-right"></i></p>
+                            <p>
+                                {{$c->comment}}
+                            </p>
+                        </div>
+                      </li>
+                    @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

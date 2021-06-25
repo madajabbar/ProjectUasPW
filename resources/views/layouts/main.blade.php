@@ -12,7 +12,7 @@
     <!-- Google Web Font -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lekton:400,700,400italic' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="{{asset('css/comment.css')}}">
     <!--  Bootstrap 3-->
     <link rel="stylesheet" href="{{asset('view/css/bootstrap.min.css')}}">
 
@@ -51,6 +51,8 @@
 
     <!-- Modernizer & Respond js -->
     <script src="{{asset('view/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
+
+
 </head>
 
 <body>
@@ -61,7 +63,7 @@
     <div class="header">
         <div class="container">
             <div class="logo">
-                <a href="#">
+                <a href="{{url('')}}">
                     <img src="{{asset('view/img/logo.png')}}" alt="Logo">
                 </a>
             </div>
@@ -83,15 +85,11 @@
                     <nav class="menu">
                         <div class="menu-list">
                             <ul>
-                                <li class="menu-item-has-children"><a href="#">Home</a>
+                                <li class="menu-item-has-children"><a href="{{url('')}}">Home</a>
                                 </li>
-                                <li><a href="about.html">About</a></li>
+                                <li><a href="{{url('about')}}">About</a></li>
                                 <li class="menu-item-has-children"><a href="/blog">Blog</a>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a type="button" class="" data-toggle="modal" data-target="#exampleModal">
-                                    Sign Up
-                                  </a></li>
                             </ul>
                         </div>
                     </nav>
@@ -99,11 +97,11 @@
                     <div class="hidden-xs">
                         <div class="menu-social-media">
                             <ul>
-                               <li><a href="#"><i class="iconmoon-facebook"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-twitter"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-dribbble3"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-pinterest"></i></a></li>
-                               <li><a href="#"><i class="iconmoon-linkedin2"></i></a></li>
+                               <li><a href="https://www.facebook.com/" target="_blank"><i class="iconmoon-facebook"></i></a></li>
+                               <li><a href="https://twitter.com/?lang=en" target="_blank"><i class="iconmoon-twitter"></i></a></li>
+                               <li><a href="https://dribbble.com/" target="_blank"><i class="iconmoon-dribbble3"></i></a></li>
+                               <li><a href="https://www.pinterest.com/" target="_blank"><i class="iconmoon-pinterest"></i></a></li>
+                               <li><a href="https://www.linkedin.com/" target="_blank"><i class="iconmoon-linkedin2"></i></a></li>
                             </ul>
                         </div>
 
@@ -120,42 +118,6 @@
         </div>
     </div>
     @yield('content')
-    <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="column" id="main">
-            <h1>Sign Up </h1>
-            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
-            <form>
-              <div class="form-group">
-                <label for="exampleInputName">Name</label>
-                <input type="name" class="form-control" id="exampleInputName" placeholder="Name">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">E-mail </label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <button type="submit" class="btn btn-primary">Sign Up</button>
-            </form>
-          </div>
-          <div class="column" id="secondary">
-            <div class="sec-content">
-              <h2>Welcome Back!</h2>
-              <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
-              <button type="button" class="btn btn-primary">Login</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
     <div class="container margin-top">
         <div class="main-title">
             <h1>OUR WORK</h1>
